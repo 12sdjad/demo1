@@ -1,0 +1,46 @@
+server:
+  port: 8080
+#给Enable类赋值使用
+enable:
+  name: 张三
+  age: 22
+
+a: 李四
+b: ${a}aaa
+
+---
+#多环境开发
+#设置启动环境
+spring:
+  profiles:
+    active: @config.activate.on-profile@
+
+---
+#开发
+spring:
+  config:
+    activate:
+      on-profile: dev
+server:
+  port: 81
+#生产
+---
+spring:
+  config:
+    activate:
+      on-profile: pro
+server:
+  port: 82
+#测试
+---
+spring:
+  config:
+    activate:
+      on-profile: test
+#server:
+#spring:
+#  datasource:
+#      url: jdbc:mysql://127.0.0.1:3306/mybatis
+#      username: root
+#      password: 123456
+#  port: 83

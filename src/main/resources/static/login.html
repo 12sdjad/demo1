@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8">
+    <title>Title</title>
+</head>
+
+<body>
+    <p>AAA</p>
+    <button onclick="a()">bbb</button>
+    <p>BBBBB</p>
+</body>
+</html>
+<script src="jquery-2.1.4.min.js"></script>
+<script>
+    var enable={
+        "name":"李四",
+        "age":"22"
+    };
+    var a=function (){
+        $(function() {
+            $.ajax({
+                // url: 请求地址
+                url: "http://localhost:8080/books/",
+                // type: 请求方式，默认是"GET"，常用的还有"POST"
+                type: "POST",
+                // dataType: 设置服务器返回的数据格式，常用的是 json 格式
+                data:JSON.stringify(enable),
+                contentType:"application/json",
+                // data: 设置发送给服务器的数据，没有参数不需设置
+                // success: 设置请求成功后的回调函数
+                success: function(response) {
+                    console.log(response);
+                    alert("请求成功!")
+                },
+                // error: 设置请求失败后的回调函数
+                error: function() {
+                    alert("请求失败！请稍后再试！");
+                },
+            })
+        });
+    }
+</script>
